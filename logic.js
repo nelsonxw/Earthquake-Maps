@@ -1,5 +1,5 @@
 /*define data source for earthquakes and tectonic plates*/
-var earthquakeLink = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
+var earthquakeLink = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson";
 var tectonicPlatesLink = "https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json";
 
 /*define a function to change circle color based on the magnitude of earthquakes*/
@@ -56,10 +56,10 @@ function createMaps(earthquakeData,earthquakeLayer,faultLineLayer) {
 	var outdoorLayer = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/outdoors-v10/tiles/256/{z}/{x}/{y}?" +
 	  "access_token=pk.eyJ1IjoibmVsc29ud2FuZyIsImEiOiJjamd6dmw4YnEwamMyMnFwNGp6ODZ1ZXpjIn0.9l00nhSK9-fdWTfQPkBpEQ");
 
-	var satelliteLayer = L.tileLayer("http://api.mapbox.com/styles/v1/mapbox/satellite-streets-v10/tiles/256/{z}/{x}/{y}?" +
+	var satelliteLayer = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v10/tiles/256/{z}/{x}/{y}?" +
 	  "access_token=pk.eyJ1IjoibmVsc29ud2FuZyIsImEiOiJjamd6dmw4YnEwamMyMnFwNGp6ODZ1ZXpjIn0.9l00nhSK9-fdWTfQPkBpEQ");
 
-	var lightLayer = L.tileLayer("http://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?" +
+	var lightLayer = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?" +
 	  "access_token=pk.eyJ1IjoibmVsc29ud2FuZyIsImEiOiJjamd6dmw4YnEwamMyMnFwNGp6ODZ1ZXpjIn0.9l00nhSK9-fdWTfQPkBpEQ");
 
 	var baseMaps = {
@@ -105,6 +105,7 @@ function createMaps(earthquakeData,earthquakeLayer,faultLineLayer) {
 
 	legend.addTo(myMap);
 
+
 	/*extract time from earthquake data, and create start and end time for the timeline function*/
 	var getInterval = function(earthquakeData) {
       return {
@@ -119,13 +120,18 @@ function createMaps(earthquakeData,earthquakeLayer,faultLineLayer) {
 	var timelineControl = L.timelineSliderControl({
           formatOutput: function(date) {
             return new Date(date).toUTCString();
+      
+
           }
         });
 	/*use timeline function to create circles based on sequence of time*/
 	var timeline = L.timeline(earthquakeData, {
+
+          
           getInterval: getInterval,
           /*add a layer for circles of all earthquakes*/
           pointToLayer: function(feature, latlng){
+                  	console.log("test2");
             var utcTime = new Date(feature.properties.time);
 			var formattedUTCTime = utcTime.toUTCString();
 			
@@ -139,7 +145,7 @@ function createMaps(earthquakeData,earthquakeLayer,faultLineLayer) {
 				"<p class='popup-text'> <strong>Magnitude: </strong>" + feature.properties.mag + "</p>" +
 				"<p class='popup-text'> <strong>UTC Time: </strong>" + formattedUTCTime + "</p>")
 			return marker;
-
+			/*console.log(formattedUTCTime);*/
           }
         });
     /*add timeline layer and controls to the map*/
