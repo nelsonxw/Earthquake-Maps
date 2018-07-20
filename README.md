@@ -2,7 +2,7 @@
 ### Project Purpose:
 
 Extract data from [United States Geological Survey](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php) and 
-visualize the actual earthquakes reported globally in the last 7 days on an interactive map online.
+visualize the actual earthquakes reported globally in the last 24 hours on an interactive map online.
 
 
 ### Project Output:
@@ -17,7 +17,7 @@ visualize the actual earthquakes reported globally in the last 7 days on an inte
 + Animation of earthquakes on the map following the sequence of time.
 
 
-Click [here](https://nelsonxw.github.io/Earthquake_Maps/) to see the result.
+Click [here](https://nelsonxw.github.io/Earthquake-Maps/) to see the result.
 
 ### Techniques used:
 + Use **HTML** and **CSS** to build index page
