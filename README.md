@@ -1,10 +1,13 @@
 # Illustrate Earthquake Data on Maps
 
 Link to visualization: https://nelsonxw.github.io/Earthquake-Maps/
-### Project Purpose:
+### Objective:
++ Retrieve recent earthquake data, including geographic locations and magnitudes.
++ Show the earthquake data on a world map with user interactiions.
++ Display the earthquake events in sequence as they took place over a period of time
 
-Extract data from [United States Geological Survey](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php) and 
-visualize the actual earthquakes reported globally in the last 24 hours on an interactive map online.
+### Data Source:
+Extracted data from [United States Geological Survey](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php) 
 
 
 ### Project Output:
