@@ -131,7 +131,6 @@ function createMaps(earthquakeData,earthquakeLayer,faultLineLayer) {
           getInterval: getInterval,
           /*add a layer for circles of all earthquakes*/
           pointToLayer: function(feature, latlng){
-                  	console.log("test2");
             var utcTime = new Date(feature.properties.time);
 			var formattedUTCTime = utcTime.toUTCString();
 			
