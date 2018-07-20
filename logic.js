@@ -144,7 +144,7 @@ function createMaps(earthquakeData,earthquakeLayer,faultLineLayer) {
 				"<p class='popup-text'> <strong>Magnitude: </strong>" + feature.properties.mag + "</p>" +
 				"<p class='popup-text'> <strong>UTC Time: </strong>" + formattedUTCTime + "</p>")
 			return marker;
-			/*console.log(formattedUTCTime);*/
+			
           }
         });
     /*add timeline layer and controls to the map*/
