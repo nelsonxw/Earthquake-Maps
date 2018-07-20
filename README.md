@@ -1,6 +1,6 @@
 # Illustrate Earthquake Data on Maps
 
-Link to visualization: https://us-crime-employment-statistics.herokuapp.com/
+Link to visualization: https://nelsonxw.github.io/Earthquake-Maps/
 ### Project Purpose:
 
 Extract data from [United States Geological Survey](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php) and 
@@ -18,8 +18,6 @@ visualize the actual earthquakes reported globally in the last 24 hours on an in
 + Legends of magnitude scales are included on the map.
 + Animation of earthquakes on the map following the sequence of time.
 
-
-Click [here](https://nelsonxw.github.io/Earthquake-Maps/) to see the result.
 
 ### Techniques used:
 + Use **HTML** and **CSS** to build index page
