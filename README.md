@@ -2,7 +2,8 @@
 
 Link to visualization: https://nelsonxw.github.io/Earthquake-Maps/  
 
-<img src="/Capture.PNG" width="400">  
+<img src="/Capture.PNG" width="800">  
+
 ### Objective:
 + Retrieve recent earthquake data, including geographic locations, time and magnitudes.
 + Show the earthquake data on a world map with user interactiions.
