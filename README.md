@@ -1,4 +1,6 @@
-# Earthquake Maps
+# Illustrate Earthquake Data on Maps
+
+Link to visualization: https://us-crime-employment-statistics.herokuapp.com/
 ### Project Purpose:
 
 Extract data from [United States Geological Survey](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php) and 
