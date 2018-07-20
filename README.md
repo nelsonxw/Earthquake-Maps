@@ -48,7 +48,6 @@ HTML, CSS, JavaScript, d3.js, leaflet, GitHub
 ### Major Steps:
 + Read earthquake data and tectonic plates data, and create layers for the overlay map.
 + Used mapbox to create 3 layers for the base map.
-Code Snippets:
 ```javascript
 var baseMaps = {
 	    "Satellite": satelliteLayer,
@@ -94,10 +93,50 @@ function getColor(mag){
 	}
 }
 ```
-+ Locations of earthquakes are displayed as circles with differnt size and color that correlat to the magnitude of earthquakes.
-+ Show popups when user moves mouse over locations of earthquakes.
-+ Legends of magnitude scales are included on the map.
-+ Animation of earthquakes on the map following the sequence of time.
++ Used timeline plugin to Leaflet to create the slider and timeline control
+```javascript
+	/*extract time from earthquake data, and create start and end time for the timeline function*/
+	var getInterval = function(earthquakeData) {
+      return {
+        start: earthquakeData.properties.time,
+        /*end time will be start time + some value based on magnitude.  18000000 = 30 minutes, so a quake of magnitude 5
+        would show on the map for 150 minutes or 2.5 hours*/
+        end:   earthquakeData.properties.time + earthquakeData.properties.mag * 1800000
+      };
+    };
+
+    /*use timeline function to create slider control*/
+	var timelineControl = L.timelineSliderControl({
+          formatOutput: function(date) {
+            return new Date(date).toUTCString();
+      
+
+          }
+        });
+	/*use timeline function to create circles based on sequence of time*/
+	var timeline = L.timeline(earthquakeData, {
+
+          
+          getInterval: getInterval,
+          /*add a layer for circles of all earthquakes*/
+          pointToLayer: function(feature, latlng){
+            var utcTime = new Date(feature.properties.time);
+			var formattedUTCTime = utcTime.toUTCString();
+			
+            var marker = L.circleMarker(latlng,{
+				radius: feature.properties.mag * 2,
+			    fillColor: getColor(feature.properties.mag),
+			    color: "#000",
+			    weight: 0.2,
+			    fillOpacity: 0.7
+				}).bindPopup("<p class='popup-text'> <strong>Location: </strong>" + feature.properties.place + "</p>" +
+				"<p class='popup-text'> <strong>Magnitude: </strong>" + feature.properties.mag + "</p>" +
+				"<p class='popup-text'> <strong>UTC Time: </strong>" + formattedUTCTime + "</p>")
+			return marker;
+			
+          }
+        });
+```
 
 
 
