@@ -7,7 +7,7 @@ Link to visualization: https://nelsonxw.github.io/Earthquake-Maps/
 + Display the earthquake events in sequence as they took place over a period of time.
 
 ### Data Source:
-Extracted data from [United States Geological Survey](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php).  Used d3.json() function and Leaflet's geoJSON function to read in data and created earthquake layer on the map.
+Extracted data from [United States Geological Survey](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php).  Used d3.json function and Leaflet's geoJSON function to read in data and created earthquake layer on the map.  
 Code Snippets:
 ```javascript
 /*read in earthquake data*/
