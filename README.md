@@ -42,20 +42,62 @@ d3.json(earthquakeLink,function(earthquakeData){
 	});
 });
 ```
+### Tools used:
+HTML, CSS, JavaScript, d3.js, leaflet, GitHub
 
-### Project Output:
+### Major Steps:
++ Read earthquake data and tectonic plates data, and create layers for the overlay map.
++ Used mapbox to create 3 layers for the base map.
+Code Snippets:
+```javascript
+var baseMaps = {
+	    "Satellite": satelliteLayer,
+	    "Grayscale": lightLayer,
+	    "Outdoors": outdoorLayer
+	  };
+```
++ Added legend to the map to illustrate different magnitude by different color
+```javascript
+/*create legends for the map*/
+	legend.onAdd = function (myMap) {
 
+	    var div = L.DomUtil.create('div', 'legend');
+	    var grades = [0, 1, 2, 3, 4, 5];
+	    var labels = [];
 
-+ Geojson data downlaoded from USGS website.
-+ A world map with 3 different layers for users to choose from.
-+ Allow uers to visualize locations of earthquakes and fault lines globally.
+	    /*create lists to represent different levels of magnitude scale*/
+	    div.innerHTML = "<h4>Magnitude Scale</h4>";
+	    for (var i = 0; i < grades.length; i++) {
+	        labels.push('<li style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+	            grades[i] + ( (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+') )
+	            );
+	    }
+	    div.innerHTML += "<ul>" + labels.join("") + "</ul>";
+	    return div;
+	};
+
+	legend.addTo(myMap);
+	
+function getColor(mag){
+	if (mag <= 1) {
+		return "#bfff00";
+	} else if (mag <= 2) {
+		return "#ffff00";
+	} else if (mag <= 3) {
+		return "#ffbf00";
+	} else if (mag <= 4) {
+		return "#ff8000";
+	} else if (mag <= 5) {
+		return "#ff4000";
+	} else {
+		return "#ff0000";
+	}
+}
+```
 + Locations of earthquakes are displayed as circles with differnt size and color that correlat to the magnitude of earthquakes.
 + Show popups when user moves mouse over locations of earthquakes.
 + Legends of magnitude scales are included on the map.
 + Animation of earthquakes on the map following the sequence of time.
 
 
-### Techniques used:
-+ Use **HTML** and **CSS** to build index page
-+ Use **JavaScript** and **leaflet** and its plugins to build interactive maps and visualizations
-+ Use **GitHub** to serve the web site
+
