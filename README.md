@@ -49,8 +49,8 @@ d3.json(earthquakeLink,function(earthquakeData){
 HTML, CSS, JavaScript, d3.js, leaflet, GitHub
 
 ### Major Steps:
-+ Read earthquake data and tectonic plates data, and create layers for the overlay map.
-+ Used mapbox to create 3 layers for the base map.
+1. Read earthquake data and tectonic plates data, and create layers for the overlay map.
+2. Used mapbox to create 3 layers for the base map.
 ```javascript
 var baseMaps = {
 	    "Satellite": satelliteLayer,
@@ -58,7 +58,7 @@ var baseMaps = {
 	    "Outdoors": outdoorLayer
 	  };
 ```
-+ Added legend to the map to illustrate different magnitude by different color
+3. Added legend to the map to illustrate different magnitude by different color
 ```javascript
 /*create legends for the map*/
 	legend.onAdd = function (myMap) {
@@ -96,7 +96,7 @@ function getColor(mag){
 	}
 }
 ```
-+ Used timeline plugin to Leaflet to create the slider and timeline control
+4. Used timeline plugin to Leaflet to create the slider and timeline control
 ```javascript
 	/*extract time from earthquake data, and create start and end time for the timeline function*/
 	var getInterval = function(earthquakeData) {
